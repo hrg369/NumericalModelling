@@ -1,17 +1,21 @@
 #include <iostream>
 #include <iomanip>
 #include <cmath>
+#include <fstream>
 
 template<typename T>
 T phirec(int);
-
-double const phi = (-1.0 + sqrt(5.0)) / 2.0;
+double const phi = (-1 + sqrt(5)) / 2;
 
 int main()
 {
 	using namespace std;
-	cout.precision(20);
-	cout << setiosflags(ios::fixed);
+	
+	ofstream fout;
+	fout.open("silverRatio.txt");
+	cout.precision(13);
+	cout.flags(ios::scientific);
+	
 	int N = 1;	
 
 	cout << "Please enter an exponent N: ";
@@ -20,7 +24,8 @@ int main()
 
 	cout << "\n";
 
-	cout << left << setw(4) << "N" << setw(20) << "phi^(N)";
+	cout << left << setw(5) << "N" << setw(20) << "phi^(N)";
+	fout << "N\t" << "Phi^(N)\n";
 	
 	cout << "\n";
 
@@ -34,15 +39,18 @@ int main()
 			phiN *= phi;
 		}
 
-		cout << left << setw(4) << i << setw(20) << phiN;
+		cout << left << setw(4) << i  << right << setw(20) << phiN;
+		fout << i << "\t" << phiN << "\n";
 		cout << "\n";	
 	}
-
+	
+	fout.close();
+	
 	cout << "\n";
 
 	cout << "Reccuring with double\n";
 
-        cout << left << setw(4) << "N" << setw(20) << "phi^(N)";
+        cout << left << setw(5) << "N" << setw(20) << "phi^(N)";
 
 	cout << "\n";
 
@@ -52,7 +60,7 @@ int main()
         {
                 phiN = phirec<double>(i);
 
-                cout << left << setw(4) << i << setw(20) << phiN;
+                cout << left << setw(4) << i << right << setw(20) << phiN;
                 cout << "\n";
         }
 	
@@ -60,7 +68,7 @@ int main()
 
         cout << "Reccuring with float\n";
 
-        cout << left << setw(4) << "N" << setw(20) << "phi^(N)";
+        cout << left << setw(5) << "N" << setw(20) << "phi^(N)";
 
         cout << "\n";
 
@@ -70,7 +78,7 @@ int main()
         {
                 phiN = phirec<float>(i);
 
-                cout << left << setw(4) << i << setw(20) << phiN;
+                cout << left << setw(4) << i << right << setw(20) << phiN;
                 cout << "\n";
         }
 
