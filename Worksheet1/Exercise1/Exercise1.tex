@@ -1,0 +1,41 @@
+The unix commandline provides a number of preset commands. Examples of some are given below:
+(a) mkdir compphys
+This command creates a directory, within the current directory, called compphys.
+
+(b) cd compphys
+This command changes the current directory to compphys, provided that compphys is
+a directory within the current directory.
+
+(c) cat > file1.txt [rtn] this is my first file [rtn][ctrl-c]
+This command creates a file called file1.txt. Upon pressing [rtn], a user can input
+their desired content for file1.txt. Pressing [rtn] again will add this content to
+the file. The key combination [ctrl-c] will shut the file and return the user to
+the commandline.
+
+(d) ls
+This command alphabetically lists the names of the files in the current directory.
+
+(e) more file1.txt
+This command prints the content of file1.txt to the console.
+
+(f) xclock &
+This command starts an xclock process. The & in the command means the process is performed
+in the background, allowing the user to keep using the same console window. This process
+creates a clock in the current system's GUI.
+
+(g) whoami
+This command prints the username of the current user.
+
+(h) man ls
+This command opens the manual page for the ls command.
+
+(i) top
+This command gives a list of the processes currently being performed by all users.
+
+(j) ps -u [username]
+This command provides a list of all processes being performed by [username].
+
+(k) kill [PID]
+This command kills a process with the specific ProcessID.
+For example, if an instance of xclock has the PID 65934, the command kill 65934
+terminates the xclock process.
