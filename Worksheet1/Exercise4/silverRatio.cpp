@@ -10,7 +10,8 @@ double const phi = (-1.0 + sqrt(5.0)) / 2.0;
 int main()
 {
 	using namespace std;
-	
+	cout.precision(20);
+	cout << setiosflags(ios::fixed);
 	int N = 1;	
 
 	cout << "Please enter an exponent N: ";
@@ -23,11 +24,15 @@ int main()
 	
 	cout << "\n";
 
-	double phiN = 0;
+	double phiN;
 	
 	for(int i = 1; i <= N; i++)
 	{
-		phiN = pow(phi, i);
+		phiN = phi;
+		for(int j = 1; j < i; j++)
+		{
+			phiN *= phi;
+		}
 
 		cout << left << setw(4) << i << setw(20) << phiN;
 		cout << "\n";	
