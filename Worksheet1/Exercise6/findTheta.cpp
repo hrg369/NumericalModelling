@@ -43,9 +43,12 @@ double bisection(double x1, double x2)
 {
 	double middle = midpoint(x1, x2);
 	double error = uncertainty(x1, x2);
-	
-	std::cout << count << "\t" << middle << "\t" << error << "\n";	
-	count++;
+    if(count > 0)
+    {
+        std::cout << count << "\t" << middle << "\t" << error << "\n";
+    }
+
+    count++;
 	if(x2 - x1 < 0.001)
 	{
 		return midpoint(x1, x2);

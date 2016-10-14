@@ -50,13 +50,13 @@ double midpoint(double x1, double x2)
 
 double uncertainty(double x1, double x2)
 {
-	return (x1 - x2)/2;
+	return (x2 - x1)/2;
 }
 
 double bisection(double x1, double x2, ofstream& fout)
 {
     double middle = midpoint(x1, x2);
-	double error = uncertainty(x2, x1);
+	double error = uncertainty(x1, x2);
 
     fout << middle << "," << error << "\n";
 
