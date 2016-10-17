@@ -6,6 +6,7 @@ double func(double);
 double bisection(double, double);
 double uncertainty(double x1, double x2);
 
+// Constants used in calculation of theta
 double const m = 5.5;
 double const l = 0.6;
 double const k = 850;
