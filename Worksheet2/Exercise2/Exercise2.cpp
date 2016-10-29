@@ -39,44 +39,48 @@ int main()
 {
 	using namespace std;
 
-	ofstream fout;
-	fout.open("Exercise2File.txt");
+	ofstream trapOut;
+	ofstream simpsOut;
+	trapOut.open("Exercise2Trapezium.csv");
+	simpsOut.open("Exercise2Simpson.csv");
 
-	cout.precision(14);
-	fout.precision(14);
-	
-	cout << left << setw(15) << "No. Intervals" << setw(20) << "Estimate" << "Error\n";
-	fout << left << setw(15) << "No. Intervals" << setw(20) << "Estimate" << "Error\n";
+	cout.precision(15);
+	trapOut.precision(15);
+	simpsOut.precision(15);
 
-
-	for(int i = 0; i < 8; i++)
+	cout << "Producing relative error for Trapezium Rule\n";
+	for(int i = 0; i < 9; i++)
 	{
-		double estimate = trapezium(0, 2, pow(10, i));
-		double error = estimate - 0.46662966259317557;
-		cout << setw(15) << pow(10, i) << setw(20) << estimate << error << "\n";
-		fout << setw(15) << pow(10, i) << setw(20) << estimate << error << "\n";
+		double estimate = trapezium(0, 2, pow(10,i));
+		double analytical = 0.46662966259317557;
+		double error = abs(analytical - estimate)/analytical;
+		trapOut << pow(10,i) << "," << error << "\n";
 	}
+
+	cout << "Finished, output saved to: Exercise2Trapezium.csv";
 
 	cout << "\n\n";
 
-	cout << left << setw(15) << "No. Intervals" << setw(20) << "Estimate" << "Error\n";
-	fout << left << setw(15) << "No. Intervals" << setw(20) << "Estimate" << "Error\n";
+	cout << "Producing relative error for Simpson's Rule\n";
 
-	for(int i = 0; i < 8; i++)
+	for(int i = 0; i < 9; i++)
 	{
-		double estimate = simpson(0, 2, pow(10, i));
-		double error = estimate - 0.46662966259317557;
-		cout << setw(15) << pow(10, i) << setw(20) << estimate << error << "\n";
-		fout << setw(15) << pow(10, i) << setw(20) << estimate << error << "\n";
+		double estimate = simpson(0, 2, pow(10,i));
+		double analytical = 0.46662966259317557;
+		double error = abs(analytical - estimate)/analytical;
+		simpsOut << pow(10,i) << "," << error << "\n";
 	}
 
+	cout << "Finished, output saved to: Exercise2Simpson.csv";
+
+	cout << "\n\n";
 
 	int i = 0;
 	double accuracy = pow(10, -8);
 	while(true)
 	{
-		double estimate1 = simpson(0, 2, pow(10, i));
-		double estimate2 = simpson(0, 2, pow(10, i+1));
+		double estimate1 = simpson(0, 2, pow(10,i/2.0));
+		double estimate2 = simpson(0, 2, pow(10,(i+1)/2.0));
 
 		if(estimate2 - estimate1 < accuracy)
 		{
@@ -87,8 +91,8 @@ int main()
 	}
 
 
-
-	fout.close();
+	trapOut.close();
+	simpsOut.close();
 
 	return 0;
 }
